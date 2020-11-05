@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>
+            Ficha de Exercicios nº1
+        </title>
+        <script language="javascript">
+        function calcular4()
+            {
+            var num11, num22, num33 ,Media;
+            num11 = calcular3.numm1.value;
+            num22 = calcular3.numm2.value;
+            num33 = calcular3.numm3.value;
+            num11 = parseFloat(num11);
+            num22 = parseFloat(num22);
+            num33 = parseFloat(num33);
+            Media = (num11 + num22 + num33)/3;
+            calcular3.txtmedia.value = Media;
+            }
+        function calculariva()
+                {
+                var cprod1, iva, valiva;
+                cprod1 = parseFloat(calcular2.cprod.value);
+                iva = parseFloat(calcular2.taxa.value);
+                valiva = cprod1 * (iva/100);
+                document.calcular2.valoriva.value = valiva;
+                }
+        function calcular(opera) {
+            var valor1 = document.calcular1.num1.value;
+            var valor2 = document.calcular1.num2.value;
+
+            if (opera == "somar") {
+                var res = parseInt(valor1) + parseInt(valor2);
+            }
+                if (opera == "subtrair") {
+                    var res = valor1 - valor2;
+                }
+                    if (opera == "multiplicar") {
+                        var res = valor1 * valor2;
+                    }
+                            if (opera =="dividir") {
+                                var res = valor1 / valor2;
+                            }
+                       
+            document.calcular1.resultado.value = res;
+        }
+        function imccalcu()
+        {
+            var p = Number(document.form.peso.value);
+            var alt = Number(document.form.altu.value);
+            var i = p/(alt*alt);
+            document.form.imc.value= i;
+            if (i < 18.5 )
+            {
+                var avi = "Abaixo do peso";
+            }
+            else if (i >= 18.5 && i < 24.9)
+            {
+                var avi = "Peso Normal";
+            }
+            else if (i >= 24.9 && i <29.9)
+            {
+                var avi = "Sobrepeso";
+            }
+            else if (i >= 30 && i < 34.9)
+            {
+                var avi = "Obesidade grau 1";
+            }
+            else if (i >= 35 && i < 39.9)
+            {
+                var avi = "Obesidade grau 2";
+            }
+            else if (i >= 40)
+            {
+                var avi = "Obesidade Morbida";
+            }
+            document.form.aviso.value = avi;
+        }
+        function Dados()
+            {
+            var dado1, dado2, dado3 ,Palpite, Total;
+            dado1 = 1 + Math.floor(Math.random()*6);
+            dado2 = 1 + Math.floor(Math.random()*6);
+            dado3 = 1 + Math.floor(Math.random()*6);
+            total = Number(dado1 + dado2 + dado3);
+            var p = document.calcular5.palp.value;
+            
+            document.calcular5.dad1.value = dado1;
+            document.calcular5.dad2.value = dado2;
+            document.calcular5.dad3.value = dado3;
+
+            if (p == total){
+                alert ("Acertaste!")
+            }
+            else{
+                alert("Erraste, o resultado da soma era " + total)            
+            }
+            document.calcular5.total.value = total;
+            }
+        </script>
+    </head>
+    <form name ="calcular3">
+        Num1<input type ="text" name ="numm1"><br>
+        Num2<input type ="text" name ="numm2"><br>
+        Num3<input type ="text" name ="numm3"><br>
+        Media<input type ="text" name ="txtmedia"><br>
+        <input type ="button" value="Calcular" onclick="calcular4();"> <input type="reset" value="Limpar">
+    </form>
+    <form name ="calcular1" method="POST">
+        Numero 1 <input type ="text" name ="num1" id="n1"><br>
+        Numero 2 <input type ="text" name ="num2" id="n2"><br>
+                Operação  <select name="opera" id="opera">
+                    <option value = "somar">Somar</option>
+                    <option value = "subtrair">Subtrair</option>
+                    <option value = "dividir">Dividir</option>
+                    <option value = "multiplicar">Multiplicar</option>
+                </select> <br>
+        Resultado <input type ="text" name ="resultado" id="resultado"><br>
+        <input type ="button" value="Calcular" onClick="calcular(document.calcular1.opera.value)"> <input type="reset" value="Limpar">
+    </form>
+    <form name="form">
+        Peso(kg)<br>
+        <input type="text" name="peso" ><br>
+        Altura(m)<br>
+        <input type="text" name="altu"><br>
+        Imc<br>
+        <input type="text" name="imc"  disabled="true"><br>
+        Aviso<br>
+        <input type="text" name="aviso" disabled="true"><br>
+        <button type="button" onclick="imccalcu();">Calcular</button>
+        <button type="reset">Limpar</button>
+
+    </form>
+    <form name ="calcular2">
+        Custo Do produto <input type ="text" name ="cprod"><br>
+                Iva  <select class="" name="taxa">
+                    <option value="23">23%</option>
+                    <option value="15">15%</option>
+                    <option value="10">10%</option>
+                </select> <br>
+        Valor do Iva <input type ="text" name ="valoriva"><br>
+        <input type ="button" value="Calcular" onclick="calculariva()"> <input type="reset" value="Limpar">
+    </form>
+    <form name ="calcular5">
+        Dado 1<input type ="text" name ="dad1" readonly><br>
+        Dado 2<input type ="text" name ="dad2" readonly><br>
+        Dado 3<input type ="text" name ="dad3" readonly><br>
+        Total:<input type ="text" name ="total" readonly><br>
+        Palpite:<input type ="text" name ="palp"><br>
+        <input type ="button" value="Lançar" onclick="Dados();">
+    </form>
+    Jordão Mendes 12ºB Nº11
+</html>
